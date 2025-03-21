@@ -12,16 +12,15 @@
 # }
 
 # Function executed after package installation
-# post_install() {
-#     echo "Configuring the package after installation..."
-    # Example: Create a configuration directory
-    # mkdir -p /etc/mypackage
-    # chmod 755 /etc/mypackage
-
-    # Example: Start a service
-    # systemctl enable myservice.service
-    # systemctl start myservice.service
-# }
+post_install() {
+# Caching fonts
+sh_cache_fonts(){
+	  msg "Caching fonts..."
+  	  fc-cache -f -v &>/dev/null
+}
+# Caching fonts
+sh_cache_fonts
+}
 
 # Function executed before package upgrade
 # pre_upgrade() {
